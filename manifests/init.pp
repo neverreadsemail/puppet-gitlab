@@ -695,7 +695,7 @@ class gitlab (
   $puppet_manage_config    = $::gitlab::params::puppet_manage_config,
   $puppet_manage_backups   = $::gitlab::params::puppet_manage_backups,
   $puppet_manage_packages  = $::gitlab::params::puppet_manage_packages,
-  $puppet_manage_sshd_package	= $::gitlab::params::puppet_manage_sshd_package,
+  $puppet_manage_sshd	   = $::gitlab::params::puppet_manage_sshd,
 
 
   $gitlab_branch           = $::gitlab::params::gitlab_branch,

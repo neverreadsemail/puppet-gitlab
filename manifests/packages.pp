@@ -68,7 +68,7 @@ class gitlab::packages inherits ::gitlab {
     }
   }
 
-  if $puppet_manage_sshd_package {
+  if $puppet_manage_sshd {
     package { 'openssh-server':
       ensure => latest,
     }
@@ -80,9 +80,10 @@ class gitlab::packages inherits ::gitlab {
     ensure  => running,
     require => Package['openssh-server'],
   }
-  service { $ssh_service_name:
-    ensure  => running,
-    require => Package['openssh-server'],
+  if $puppet_manage_sshd {
+    service { $ssh_service_name:
+      ensure  => running,
+      require => Package['openssh-server'],
+    }
   }
-
 }

@@ -13,18 +13,20 @@
 # === Authors
 #
 # Spencer Owen <owenspencer@gmail.com>
+# Allison Andrews <akandrews@lbl.gov>
 #
 # === Copyright
 #
 # Copyright 2014 Spencer Owen, unless otherwise noted.
+# Copyright 2015 Allison Andrews
 #
 class gitlab::params {
 
   # Manage Packages
-  $puppet_manage_config   = true  # Manages /etc/gitlab/gitlab.rb
-  $puppet_manage_backups  = true  # Creates cron job to backup at 2am
-  $puppet_manage_packages = true  # Manages openssl and postfix packages
-
+  $puppet_manage_config       = true     # Manages /etc/gitlab/gitlab.rb
+  $puppet_manage_backups      = true     # Creates cron job to backup at 2am
+  $puppet_manage_packages     = true     # Manages openssl and postfix packages
+  $puppet_manage_sshd_package = true # manages sshd package
   # Gitlab server settings
   $gitlab_branch         = undef   # Required: (e.g. '7.0.0') - Branch to download and install
   $gitlab_release        = 'basic' # 'basic' | 'enterprise' - (default: basic)

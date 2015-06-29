@@ -68,8 +68,10 @@ class gitlab::packages inherits ::gitlab {
     }
   }
 
-  package { 'openssh-server':
-    ensure => latest,
+  if $puppet_manage_sshd_package {
+    package { 'openssh-server':
+      ensure => latest,
+    }
   }
   package { $mail_application:
     ensure => latest,

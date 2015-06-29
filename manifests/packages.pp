@@ -21,7 +21,7 @@ class gitlab::packages inherits ::gitlab {
   # The install documentation recommends different mail apps for different releases
   # https://about.gitlab.com/downloads/
   case $::operatingsystem {
-    'CentOS', 'OracleLinux', 'RedHat': {
+    'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
       $mail_application = 'postfix'
       $ssh_service_name = 'sshd'
       

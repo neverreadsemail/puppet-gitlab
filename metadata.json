@@ -41,6 +41,13 @@
                 "7"
             ]
         }
+        {
+            "operatingsystem": "Scientific",
+            "operatingsystemrelease": [
+                "6.5",
+                "7"
+            ]
+        }
 
     ]
 

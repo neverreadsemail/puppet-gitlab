@@ -141,11 +141,13 @@ class gitlab::install inherits ::gitlab {
         # Basic version, use user supplied url
         info("Downloading ${::gitlab::gitlab_release} from user specified url: ${::gitlab::gitlab_download_link}")
         $gitlab_url = $::gitlab::gitlab_download_link
+        $gitlab_package_name = "gitlab-ce"
       }
       'enterprise': {
         # Enterprise verison, use user supplied url. This is the only valid configuration for enterprise users
         info("Downloading ${::gitlab::gitlab_release} from user specified url: ${::gitlab::gitlab_download_link}")
         $gitlab_url = $::gitlab::gitlab_download_link
+        $gitlab_package_name = "gitlab-ee"
       }
       default : {
         # $gitlab_release is neither basic nor enterprise, invalid input
@@ -192,6 +194,7 @@ class gitlab::install inherits ::gitlab {
   }
   # Install gitlab with the appropriate package manager (rpm or dpkg)
   package { 'gitlab':
+    name     => $gitlab_package_name,
     ensure   => latest,
     source   => "${download_location}/${omnibus_filename}",
     provider => $package_manager,
